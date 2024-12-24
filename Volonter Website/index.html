@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>volonter.kz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 250px;
+            background-color: #333;
+            padding-top: 20px;
+            transform: translateX(-250px);
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .sidebar.open {
+            transform: translateX(0);
+        }
+        .sidebar a {
+            display: block;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            margin-top: 10px;
+        }
+        .sidebar a:hover {
+            background-color: #4CAF50;
+        }
+        .toggle-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .hero {
+            text-align: center;
+            padding: 50px;
+            background: #ddd url('volunteer.jpg') no-repeat center center/cover;
+            color: white;
+        }
+        .section {
+            padding: 30px;
+            text-align: center;
+        }
+        .cards {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .card {
+            background: white;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            width: 300px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .card button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+            margin-top: 10px;
+            width: 100%;
+        }
+        .card button:hover {
+            background-color: #45a049;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 0.5px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header> 
+        <h1>V O L O N T E R . K Z</h1>
+        <p>Присоединяйся к нам и помоги миру!</p>
+        <img src="volonteer1.png"> 
+    </header>
+
+    <button class="toggle-btn" onclick="toggleSidebar()">☰ Menu</button>
+    <div class="sidebar" id="sidebar">
+        <button class="close-btn" onclick="toggleSidebar()">× Close</button>
+        <div style="margin-top: 10px;">
+            <a href="#opportunities">Возможности</a>
+            <a href="#contact">Контакты</a>
+            <a href="#about">О нас</a>
+            <a href="news.html">Новости</a>
+        </div>
+    </div>
+
+    <section id="opportunities" class="section">
+        <h2>Возможности для волонтёров</h2>
+        <div class="cards">
+            <div class="card">
+                <h3>Общественная уборка</h3>
+                <p>Уборка общественных мест, парков, пляжей.</p>
+                <button>Узнать больше</button>
+            </div>
+            <div class="card">
+                <h3>Раздача еды нуждающимся</h3>
+                <p>Раздача еды, помощь с покупкой продуктов первой необходимости.</p>
+                <button>Узнать больше</button>
+            </div>
+            <div class="card">
+                <h3>Помощь животным</h3>
+                <p>Помогайте игрушками и едой животным. Помогайте с поиском дома.</p>
+                <button>Узнать больше</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section">
+        <section id="contact" class="section">
+            <h2>Свяжитесь с нами!</h2>
+            <button onclick="window.location.href='contactus.html'" style="background-color: #4CAF50; color: white; border: none; padding: 10px 20px; cursor: pointer; border-radius: 5px; font-size: 16px;">Перейти на страницу контактов</button>
+        </section>
+        <p>Почта: whriteus@volonterkz.com</p>
+    </section>
+
+    <section id="about" class="section">
+        <h2>О нас</h2>
+        <p>Мы госсударственная организация помогающая нуждающимя по Республике Казахстан. Мы занимаемся помощью бездомным, детским домам, уборка мусора, помощь животным.</p>
+        <p>Идентефикационный номер организации 149421045D. Организация основанна в 2014 под руководством А.М. Романов</p>
+        <img src="volonter.jpg" alt="Volunteer 1" weight="300" height="300">
+        <img src="volonter2.jpg" alt="Volunteer 2" weight="300" height="300">
+        <img src="volonter3.jpg" alt="Volunteer 3" weight="300" height="300">
+    </section>
+    
+    <footer>
+        <p>&copy; 2024 volonter.kz Все права защищены.</p>
+    </footer>
+
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('open');
+        }
+    </script>
+</body>
+</html>
