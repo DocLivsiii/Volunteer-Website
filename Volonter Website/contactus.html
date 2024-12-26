@@ -64,7 +64,7 @@
         <h2>Свяжитесь с нами!</h2>
     </header>
     <div class="form-container">
-        <form onsubmit="return validateForm()">
+        <form onsubmit="return saveToFile()">
             <div class="form-group">
                 <label for="lastName">Фамилия:</label>
                 <input type="text" id="lastName" name="lastName" required>
@@ -85,7 +85,7 @@
         </form>
     </div>
     <script>
-        function validateForm() {
+        function saveToFile() {
             const lastName = document.getElementById('lastName').value.trim();
             const firstName = document.getElementById('firstName').value.trim();
             const middleName = document.getElementById('middleName').value.trim();
@@ -96,7 +96,7 @@
                 return false;
             }
 
-            // Дополнительная проверка для контакта (email или телефон)
+            // Проверка корректности контакта
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             const phoneRegex = /^\+?[0-9]{10,15}$/;
 
@@ -105,7 +105,15 @@
                 return false;
             }
 
-            return true;
+            // Формируем данные для сохранения
+            const fileContent = `Фамилия: ${lastName}\nИмя: ${firstName}\nОтчество: ${middleName}\nКонтакт: ${contact}`;
+            const blob = new Blob([fileContent], { type: 'text/plain' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = 'contact_info.txt';
+            link.click();
+
+            return false; // Предотвращаем отправку формы
         }
     </script>
 </body>
